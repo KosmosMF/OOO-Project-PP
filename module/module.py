@@ -16,7 +16,7 @@ def preprocess_image(image_path):
     return original_img, img
 
 
-def extract_and_filter_boxes(img):
+def extract_and_filter_boxes(img, original_img):
     contours = cv2.findContours(img.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]
     boxes = []
     for cnt in contours:
@@ -131,14 +131,7 @@ def draw_boxes_on_image(original_img, boxes):
 
 
 if __name__ == "__main__":
-    image_path = input("Укажите путь до изображения: ")
-    model_path = 'my_model.h5'
+    model_path = 'model.h5'
     class_names = ['!', '+', ',', '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '=', 'Ё', 'А', 'Б', 'В', 'Г',
                    'Д', 'Е', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч',
                    'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я']
-
-    original_img, img = preprocess_image(image_path)
-    boxes, y1, y2 = extract_and_filter_boxes(img)
-    result = recognize_characters(original_img, boxes, y1, y2, model_path, class_names)
-    print(result)
-    draw_boxes_on_image(original_img, boxes)
