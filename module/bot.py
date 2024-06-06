@@ -5,9 +5,8 @@ from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
-from config import token
 
-bot = Bot(token)
+bot = Bot(token='7191286169:AAGhrpQALBMxdfAA2VoBfOYu7sEiXLxuTKQ')
 dp = Dispatcher()
 
 @dp.message(CommandStart())
