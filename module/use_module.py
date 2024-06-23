@@ -1,4 +1,4 @@
-from module import *
+from handtext_decoder import *
 def start_module(image_path):
     model_path = 'model.h5'
     class_names = ['!', '+', ',', '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '=', 'Ё', 'А', 'Б', 'В', 'Г',
